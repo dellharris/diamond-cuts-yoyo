@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YoYo — Campaign Guide · DJ Diamond Kuts</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+    :root {
+      --bg:        #09000d;
+      --bg2:       #120018;
+      --card:      #1a0022;
+      --border:    rgba(220, 60, 160, 0.18);
+      --border-hi: rgba(220, 60, 160, 0.45);
+      --pink:      #d91b7e;
+      --pink-hi:   #f03da0;
+      --pink-soft: #ff7ec7;
+      --pale:      #f0c6e0;
+      --gold:      #d4a843;
+      --text:      #fff;
+      --muted:     #a07090;
+      --c1:        #1a1030;
+      --c1-line:   rgba(100, 140, 255, 0.35);
+      --c1-accent: #7eaaff;
+      --c2:        #0e0a1a;
+      --c2-line:   rgba(220, 60, 160, 0.45);
+      --c2-accent: #f03da0;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── HERO ─────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    .hero-photo {
+      position: absolute;
+      inset: 0;
+      right: 0;
+      left: 38%;
+      background-image: url('assets/hero.jpg');
+      background-size: cover;
+      background-position: center top;
+    }
+
+    /* left fade + bottom fade layered */
+    .hero-gradient {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right,  var(--bg) 36%, rgba(9,0,13,0.72) 58%, rgba(9,0,13,0.12) 80%, transparent 100%),
+        linear-gradient(to bottom, transparent 55%, rgba(9,0,13,0.85) 82%, var(--bg) 100%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 56px 72px;
+      max-width: 680px;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--pink-soft);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(44px, 6vw, 76px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1.0;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--pink-soft);
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 420px;
+      margin-bottom: 36px;
+      line-height: 1.65;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 0;
+    }
+
+    .hero-stat {
+      padding: 14px 24px;
+      border: 1px solid var(--border-hi);
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(12px);
+    }
+    .hero-stat:first-child { border-radius: 10px 0 0 10px; }
+    .hero-stat:last-child  { border-radius: 0 10px 10px 0; }
+    .hero-stat + .hero-stat { border-left: none; }
+
+    .hs-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); }
+    .hs-value { font-size: 18px; font-weight: 700; color: #fff; margin-top: 2px; }
+    .hs-value.pink { color: var(--pink-soft); }
+
+    /* ─── VIDEO ─────────────────────────────────────────────────── */
+    .video-section {
+      padding: 80px 56px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 32px;
+    }
+
+    .video-wrap {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border-hi);
+      box-shadow: 0 0 60px rgba(217,27,126,0.12);
+    }
+
+    .video-wrap video {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #000;
+    }
+
+    /* ─── DIVIDER ───────────────────────────────────────────────── */
+    .divider {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 56px;
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ─── CAMPAIGN PLAN ─────────────────────────────────────────── */
+    .plan-section {
+      padding: 80px 56px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .plan-intro {
+      max-width: 600px;
+      margin-bottom: 48px;
+    }
+
+    .plan-intro p {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-top: 12px;
+    }
+
+    .plan-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 700px) { .plan-grid { grid-template-columns: 1fr; } }
+
+    .plan-card {
+      border-radius: 16px;
+      padding: 36px;
+      border: 1px solid;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .plan-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+    }
+
+    .plan-card.c1 {
+      background: var(--c1);
+      border-color: var(--c1-line);
+    }
+    .plan-card.c1::before { background: linear-gradient(to right, var(--c1-accent), transparent); }
+
+    .plan-card.c2 {
+      background: var(--c2);
+      border-color: var(--c2-line);
+    }
+    .plan-card.c2::before { background: linear-gradient(to right, var(--c2-accent), transparent); }
+
+    .pc-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    .c1 .pc-tag { background: rgba(126,170,255,0.12); color: var(--c1-accent); border: 1px solid rgba(126,170,255,0.25); }
+    .c2 .pc-tag { background: rgba(240,61,160,0.1);   color: var(--c2-accent); border: 1px solid rgba(240,61,160,0.25); }
+
+    .pc-budget {
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .c1 .pc-budget { color: var(--c1-accent); }
+    .c2 .pc-budget { color: var(--c2-accent); }
+
+    .pc-name {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+
+    .pc-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .pc-targets {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .pc-target {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: #ccc;
+    }
+
+    .pc-target .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .c1 .dot.on { background: var(--c1-accent); }
+    .c2 .dot.on { background: var(--c2-accent); }
+    .dot.off { background: #333; border: 1px solid #555; }
+    .pc-target .off-text { color: #444; text-decoration: line-through; }
+
+    .c2 .added {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 1px 7px;
+      border-radius: 4px;
+      background: rgba(240,61,160,0.15);
+      color: var(--c2-accent);
+      border: 1px solid rgba(240,61,160,0.3);
+      margin-left: 6px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .pc-warn {
+      margin-top: 20px;
+      padding: 12px 14px;
+      background: rgba(212,168,67,0.07);
+      border: 1px solid rgba(212,168,67,0.2);
+      border-radius: 8px;
+      font-size: 12px;
+      color: var(--gold);
+      line-height: 1.5;
+    }
+
+    /* ─── PAYMENT NOTE ──────────────────────────────────────────── */
+    .notice-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 56px 60px;
+    }
+
+    .notice-banner {
+      background: rgba(212,168,67,0.05);
+      border: 1px solid rgba(212,168,67,0.2);
+      border-radius: 14px;
+      padding: 22px 28px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .nb-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: rgba(212,168,67,0.12);
+      border: 1px solid rgba(212,168,67,0.25);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 16px;
+    }
+
+    .nb-text h4 { font-size: 15px; font-weight: 700; color: var(--gold); margin-bottom: 5px; }
+    .nb-text p  { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+    /* ─── LAUNCH CHECKLIST ──────────────────────────────────────── */
+    .launch-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 56px 100px;
+    }
+
+    .launch-inner {
+      background: linear-gradient(135deg, #160022 0%, #0d0018 100%);
+      border: 1px solid var(--border-hi);
+      border-radius: 20px;
+      padding: 48px;
+    }
+
+    .launch-inner .section-label { margin-bottom: 10px; }
+
+    .launch-title {
+      font-size: 26px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      letter-spacing: -0.3px;
+    }
+
+    .launch-sub {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 36px;
+    }
+
+    .launch-totals {
+      display: flex;
+      gap: 40px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+
+    .lt-item .lt-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+    .lt-item .lt-val   { font-size: 28px; font-weight: 800; color: #fff; }
+    .lt-item .lt-val.pink { color: var(--pink-soft); }
+
+    .checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .cl-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .cl-num {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: var(--pink);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    strong { color: #fff; }
+
+    /* ─── FOOTER ────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 56px;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    footer span { color: var(--pink); font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════ HERO -->
+<section class="hero">
+  <div class="hero-photo"></div>
+  <div class="hero-gradient"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Spotify for Artists · Showcase Campaign</div>
+    <h1>Launch <em>YoYo</em><br>the Right Way</h1>
+    <p class="hero-sub">A campaign strategy built for DJ Diamond Kuts — two targeted pushes to wake up existing fans and reach new listeners at the same time.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hs-label">Song</div>
+        <div class="hs-value">YoYo</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-label">Total Budget</div>
+        <div class="hs-value pink">$300</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-label">Campaigns</div>
+        <div class="hs-value">2</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-label">Market</div>
+        <div class="hs-value">United States</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════ VIDEO -->
+<section class="video-section">
+  <div class="section-label">Step-by-step walkthrough</div>
+  <div class="section-title">Watch and follow along</div>
+  <div class="video-wrap">
+    <video controls preload="metadata">
+      <source src="assets/walkthrough.mp4" type="video/mp4" />
+    </video>
+  </div>
+</section>
+
+<hr class="divider" />
+
+
+<!-- ══════════════════════════════════════════════════ CAMPAIGN PLAN -->
+<section class="plan-section">
+  <div class="plan-intro">
+    <div class="section-label">The strategy</div>
+    <div class="section-title">Two campaigns, one goal</div>
+    <p>Running both sub-campaigns at the same time covers the full funnel — the first locks in your existing listeners, the second brings in new ones. Together they give YoYo the best shot at tipping over.</p>
+  </div>
+
+  <div class="plan-grid">
+
+    <div class="plan-card c1">
+      <div class="pc-tag">Sub-Campaign 1</div>
+      <div class="pc-budget">$100</div>
+      <div class="pc-name">Your Fans First</div>
+      <div class="pc-desc">Targets people who already have a relationship with your music — listeners who've streamed you before but have gone quiet for 28 or more days. This campaign wakes them up and gets YoYo in front of the audience you've already earned.</div>
+      <div class="pc-targets">
+        <div class="pc-target"><div class="dot on"></div> Previously active listeners</div>
+        <div class="pc-target"><div class="dot on"></div> Programmed listeners</div>
+        <div class="pc-target"><div class="dot off"></div> <span class="off-text">Potential listeners</span></div>
+      </div>
+      <div class="pc-warn">Spotify may flag this as "Not likely to deliver" — that's expected. The audience is intentionally narrow. Campaign 2 covers the broader reach.</div>
+    </div>
+
+    <div class="plan-card c2">
+      <div class="pc-tag">Sub-Campaign 2</div>
+      <div class="pc-budget">$200</div>
+      <div class="pc-name">Open the Doors</div>
+      <div class="pc-desc">Everything Campaign 1 does, plus it adds potential new listeners — people who don't know your music yet but whose listening habits match your audience. The bigger pool means better delivery likelihood and more new streams.</div>
+      <div class="pc-targets">
+        <div class="pc-target"><div class="dot on"></div> Previously active listeners</div>
+        <div class="pc-target"><div class="dot on"></div> Programmed listeners</div>
+        <div class="pc-target"><div class="dot on"></div> Potential listeners<span class="added">New</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider" />
+
+
+<!-- ══════════════════════════════════════════════════ PAYMENT NOTE -->
+<section class="notice-section" style="padding-top:60px;">
+  <div class="notice-banner">
+    <div class="nb-icon">!</div>
+    <div class="nb-text">
+      <h4>Add a payment method before you start</h4>
+      <p>The team page shows no payment method on file for DJ Diamond Kuts. Add a card in <strong>Settings → Team → Billing</strong> before setting up the campaigns or they won't be able to go live.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════ LAUNCH CHECKLIST -->
+<section class="launch-section" style="padding-top:48px;">
+  <div class="launch-inner">
+    <div class="section-label">Before you submit</div>
+    <div class="launch-title">Pre-launch checklist</div>
+    <div class="launch-sub">Confirm all five before hitting Submit on the Review and submit screen.</div>
+
+    <div class="launch-totals">
+      <div class="lt-item">
+        <div class="lt-label">Sub-campaigns</div>
+        <div class="lt-val">2</div>
+      </div>
+      <div class="lt-item">
+        <div class="lt-label">Total spend</div>
+        <div class="lt-val pink">$300</div>
+      </div>
+      <div class="lt-item">
+        <div class="lt-label">Format</div>
+        <div class="lt-val">Showcase</div>
+      </div>
+    </div>
+
+    <div class="checklist">
+      <div class="cl-item">
+        <div class="cl-num">1</div>
+        <span>Campaign 1 shows <strong>$100</strong>, targeting <strong>Previously active + Programmed listeners</strong>, United States</span>
+      </div>
+      <div class="cl-item">
+        <div class="cl-num">2</div>
+        <span>Campaign 2 shows <strong>$200</strong>, targeting <strong>all three audience types</strong> including Potential listeners, United States</span>
+      </div>
+      <div class="cl-item">
+        <div class="cl-num">3</div>
+        <span>Both campaigns show <strong>Showcase</strong> format and <strong>Home and Browse</strong> placement</span>
+      </div>
+      <div class="cl-item">
+        <div class="cl-num">4</div>
+        <span>Both headlines are set to <strong>"Getting buzz"</strong> in the Customize tab</span>
+      </div>
+      <div class="cl-item">
+        <div class="cl-num">5</div>
+        <span>Payment method is on file for the <strong>DJ Diamond Kuts</strong> team before submitting</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════ FOOTER -->
+<footer>
+  <div>YoYo Campaign Guide · DJ Diamond Kuts</div>
+  <div>$100 retargeting + $200 growth · <span>$300 total</span> · United States</div>
+</footer>
+
+</body>
+</html>
